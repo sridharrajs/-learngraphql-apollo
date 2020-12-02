@@ -3,27 +3,33 @@ const { Author, Book } = require('../models');
 const resolvers = {
   Query: {
     book: async (parent, args, context) => {
-      return {
-        book: await Book.findById(args.id),
-        author: (parent, args, context) => {
-          return Book.find({
-            authorId: parent.id
-          });
-        }
+      const book = await Book.findById(args.id);
+      book.author = await Author.findById(book.authorId)
+      return book;
+    },
+    books: async (parent, args, context) => {
+      const books = await Book.find({});
+      for (const book of books) {
+        book.author = await Author.findById(book.authorId);
       }
+      return books;
     },
-    books: (parent, args, context) => {
-      return Book.find({});
+    author: async (parent, args, context) => {
+      const author = await Author.findById(args.id);
+      author.books = await Book.find({
+        authorId: author.id
+      });
+      return author;
     },
-    author: (parent, args, context) => {
-      return Author.findById(args.id);
-    },
-    authors: (parent, args, context) => {
-      return Author.find({});
-    },
-    // Book: (parent, args, context) => {
-    //   return Author.findById(parent.authorId);
-    // }
+    authors: async (parent, args, context) => {
+      const authors = await Author.find({});
+      for (const author of authors) {
+        author.books = await Book.find({
+          authorId: author.id
+        });
+      }
+      return authors;
+    }
   },
   Mutation: {
     addAuthor: (parent, args, context) => {
