@@ -1,0 +1,36 @@
+{
+  "name": "learngraphql-apollo",
+  "version": "1.0.0",
+  "description": "GraphQL using apollo",
+  "main": "index.js",
+  "bin": {
+    "learngraphql-apollo": "server.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sridharrajs/learngraphql-apollo.git"
+  },
+  "author": "sridharrajs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sridharrajs/learngraphql-apollo/issues"
+  },
+  "homepage": "https://github.com/sridharrajs/learngraphql-apollo#readme",
+  "dependencies": {
+    "apollo-server": "^2.19.0",
+    "apollo-server-express": "^2.19.0",
+    "chalk": "^4.1.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.4.0",
+    "graphql-resolvers": "^0.4.2",
+    "mongoose": "^5.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

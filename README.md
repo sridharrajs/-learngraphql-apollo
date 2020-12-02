@@ -1,2 +1,2 @@
-# -learngraphql-apollo
+# learngraphql-apollo
 GraphQL using apollo
